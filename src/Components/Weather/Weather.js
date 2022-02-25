@@ -1,7 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
+import './Weather.css';
 import React, { useState, useEffect } from 'react';
 import SearchLocation from './SearchLocation';
+import DisplayWeather from './DisplayWeather';
 
 function Weather() {
 	const [currentWeather, setCurrentWeather] = useState({});
@@ -12,13 +14,14 @@ function Weather() {
 		setOneCallWeather(oneCallData);
 	}
 
-	console.log('current weather', currentWeather);
-	console.log('one call weather', oneCallWeather);
-
 	return (
-		<div>
-			<h1>Weather</h1>
+		<div className='weather-container'>
+			<h2 className='weather--title'>Weather</h2>
 			<SearchLocation searchSuccess={searchSuccess} />
+			<DisplayWeather
+				currentWeather={currentWeather}
+				oneCallWeather={oneCallWeather}
+			/>
 		</div>
 	);
 }
