@@ -1,13 +1,21 @@
+.date-weather-container {
+	color: #22223b;
+	margin: 15px;
+	padding: 15px;
+}
+
+.weather-container {
+	padding: 10px;
+}
+
 .weather--title {
 	font-size: 1.5em;
 }
 
 .weather-search {
 	height: 40px;
-	width: fit-content;
 	text-indent: 5px;
 	display: flex;
-	padding: 0 10px;
 	align-items: center;
 	justify-content: center;
 	border-bottom: 2px solid transparent;
@@ -21,6 +29,7 @@
 }
 
 .weather-search--input {
+	background: none;
 	width: 100%;
 	padding: 5px;
 	font-size: 1.2em;
@@ -56,4 +65,51 @@
 
 .weather--search-icon {
 	color: #858585;
+}
+
+.weather--temperature {
+	font-size: 50px;
+}
+
+.weather--degrees-symbol {
+	font-size: 25px;
+}
+
+.weather--current {
+	display: flex;
+	align-items: center;
+}
+
+.weather--icon {
+	height: 25px;
+	width: auto;
+}
+
+.weather--main-weather {
+	font-size: 20px;
+}
+
+.weather--sunset-sunrise div {
+	display: flex;
+	align-items: center;
+}
+
+.weather--sunrise,
+.weather--sunset {
+	margin-right: 7px;
+	height: 20px;
+	width: auto;
+}
+
+.date-time-conatiner {
+	padding: 10px;
+	text-align: right;
+}
+
+.date-time--day {
+	font-size: 20px;
+}
+
+.date-time--time {
+	font-size: 50px;
 }

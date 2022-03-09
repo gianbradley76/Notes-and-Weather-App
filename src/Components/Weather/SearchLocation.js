@@ -2,7 +2,6 @@
 import { MdLocationOn, MdSearch } from 'react-icons/md';
 import React, { useState } from 'react';
 import fetchCurrentWeather from './fetchCurrentWeather';
-import fetchOneCallWeather from './fetchOneCallWeather';
 
 function SearchLocation(props) {
 	const [searchText, setSearchText] = useState('');
@@ -23,11 +22,8 @@ function SearchLocation(props) {
 	async function SearchLocation(event) {
 		if (event.key === 'Enter') {
 			const currentWeatherData = await fetchCurrentWeather(searchText);
-			const coordinates = { ...currentWeatherData.coord };
-			const oneCallData = await fetchOneCallWeather(coordinates);
 
-			props.searchSuccess(currentWeatherData, oneCallData);
-			console.log(event.target.value);
+			props.searchSuccess(currentWeatherData);
 		}
 	}
 

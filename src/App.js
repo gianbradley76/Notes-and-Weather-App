@@ -1,12 +1,12 @@
 import Notes from './Components/Notes/Notes';
-import Weather from './Components/Weather/Weather';
+import DateWeather from './Components/Weather/DateWeather';
 import './App.css';
 
 function App() {
 	return (
 		<div className='App'>
+			<DateWeather />
 			<Notes />
-			<Weather />
 		</div>
 	);
 }
