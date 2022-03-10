@@ -4,8 +4,26 @@
 	padding: 15px;
 }
 
+.date-time-conatiner {
+	border-right: 3px solid #4a4e69;
+	padding: 0 15px;
+	text-align: right;
+}
+
+.date-time--day {
+	font-size: 40px;
+	/* letter-spacing: -2px; */
+}
+
+.date-time--time {
+	font-size: 100px;
+}
+
 .weather-container {
-	padding: 10px;
+	display: grid;
+	grid-template-rows: 40px 110px;
+	gap: 5px;
+	margin: 10px;
 }
 
 .weather--title {
@@ -29,10 +47,11 @@
 }
 
 .weather-search--input {
+	color: #4a4e69;
 	background: none;
 	width: 100%;
 	padding: 5px;
-	font-size: 1.2em;
+	font-size: 1.5em;
 	border: none;
 	text-transform: capitalize;
 	transition: 0.2s ease all;
@@ -41,6 +60,7 @@
 }
 
 .weather-search--input:focus {
+	color: #22223b;
 	outline: none;
 }
 
@@ -59,57 +79,41 @@
 	-webkit-transition: 0.2s ease all;
 }
 
-.weather---location-icon {
-	color: #555;
-}
-
+.weather---location-icon,
 .weather--search-icon {
-	color: #858585;
+	color: #4a4e69;
 }
 
-.weather--temperature {
-	font-size: 50px;
+.weather-info-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.weather-info--text {
+	font-size: 15px;
+	color: #4a4e69;
+}
+
+.weather--temperature,
+.weather--current,
+.weather--sunrise,
+.weather--sunset {
+	display: flex;
+	align-items: center;
 }
 
 .weather--degrees-symbol {
 	font-size: 25px;
 }
 
-.weather--current {
-	display: flex;
-	align-items: center;
-}
-
 .weather--icon {
-	height: 25px;
+	color: #4a4e69;
+	height: 20px;
 	width: auto;
+	margin-right: 7px;
 }
 
 .weather--main-weather {
 	font-size: 20px;
-}
-
-.weather--sunset-sunrise div {
-	display: flex;
-	align-items: center;
-}
-
-.weather--sunrise,
-.weather--sunset {
-	margin-right: 7px;
-	height: 20px;
-	width: auto;
-}
-
-.date-time-conatiner {
-	padding: 10px;
-	text-align: right;
-}
-
-.date-time--day {
-	font-size: 20px;
-}
-
-.date-time--time {
-	font-size: 50px;
 }

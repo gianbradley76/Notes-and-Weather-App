@@ -1,4 +1,4 @@
-import { WiCloud, WiNightClear } from 'react-icons/wi';
+import { WiThermometer, WiCloud, WiNightClear } from 'react-icons/wi';
 import {
 	BsCloudDrizzle,
 	BsFillCloudRainFill,
@@ -54,23 +54,24 @@ function Weather(props) {
 
 	return (
 		<div className='weather-info-container'>
-			<p className='weather--temperature'>
-				{temperature}
-				<span className='weather--degrees-symbol'>°C</span>
-			</p>
+			<div className='weather--temperature'>
+				<WiThermometer className='weather--icon' />
+				<p className='weather-info--text'>
+					{temperature}
+					<span>°C</span>
+				</p>
+			</div>
 			<div className='weather--current'>
 				{WeatherIcon()}
-				<p className='weather--main-weather'>{mainWeather}</p>
+				<p className='weather-info--text'>{mainWeather}</p>
 			</div>
-			<div className='weather--sunset-sunrise'>
-				<div>
-					<BsSunriseFill className='weather--sunrise' />
-					<p>{sunriseTime}</p>
-				</div>
-				<div>
-					<BsSunsetFill className='weather--sunset' />
-					<p>{sunsetTime}</p>
-				</div>
+			<div className='weather--sunrise'>
+				<BsSunriseFill className='weather--icon' />
+				<p className='weather-info--text'>{sunriseTime}</p>
+			</div>
+			<div className='weather--sunset'>
+				<BsSunsetFill className='weather--icon' />
+				<p className='weather-info--text'>{sunsetTime}</p>
 			</div>
 		</div>
 	);

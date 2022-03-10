@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import './Weather.css';
+import './DateWeather.css';
 import React, { useState, useEffect } from 'react';
 import SearchLocation from './SearchLocation';
 import Weather from './Weather';
@@ -15,11 +15,11 @@ function DateWeather() {
 
 	return (
 		<div className='date-weather-container'>
+			<DateTime />
 			<div className='weather-container'>
 				<SearchLocation searchSuccess={searchSuccess} />
 				<Weather currentWeather={currentWeather} />
 			</div>
-			<DateTime />
 		</div>
 	);
 }

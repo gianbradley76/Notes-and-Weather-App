@@ -2,7 +2,7 @@
 	width: 100%;
 	height: inherit;
 	display: grid;
-	grid-template-columns: 30% auto;
+	grid-template-columns: 25% auto;
 	grid-template-rows: 30% auto;
 	gap: 20px;
 	padding: 20px;
@@ -10,5 +10,6 @@
 
 .date-weather-container {
 	display: grid;
-	grid-template-columns: 40% auto;
+	grid-template-columns: auto 35%;
+	align-items: center;
 }
