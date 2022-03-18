@@ -1,4 +1,4 @@
-import Notes from './Components/Notes/Notes';
+import Tasks from './Components/Tasks/Tasks';
 import DateWeather from './Components/Weather/DateWeather';
 import './App.css';
 
@@ -6,7 +6,7 @@ function App() {
 	return (
 		<div className='App'>
 			<DateWeather />
-			<Notes />
+			<Tasks />
 		</div>
 	);
 }

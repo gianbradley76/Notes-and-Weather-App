@@ -11,7 +11,9 @@ function DateWeather() {
 
 	function searchSuccess(currentWeatherData) {
 		setCurrentWeather(currentWeatherData);
-	}
+  }
+  
+  console.log(currentWeather)
 
 	return (
 		<div className='date-weather-container'>
