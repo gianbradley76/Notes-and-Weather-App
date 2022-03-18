@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import TaskSelector from './TaskSelector';
-import TaskBlock from './TaskBlock';
 import AddTask from './AddTask';
 import DisplayedTasks from './DisplayedTasks';
 import './Tasks.css';
@@ -23,22 +22,26 @@ function Tasks() {
 	}
 
 	function deleteTask(taskId) {
-		const tasksListCopy = tasksList;
-		const filteredTasks = tasksListCopy.filter((task) => task.id !== taskId);
-		setTasksList(filteredTasks);
+		setTasksList((prevTasksList) =>
+			prevTasksList.filter((task) => task.id !== taskId)
+		);
 	}
 
-	/* 	const taskBox =
-		tasksList === undefined ? null
-			: tasksList.map((task) => {
-					return (
-						<TaskBlock
-							key={task.id}
-							taskData={task}
-							handleDelete={deleteTask}
-						/>
-					);
-			  }); */
+	function toggleImportant(taskId) {
+		console.log('CHANGED!', taskId);
+		setTasksList((prevTasksList) => {
+			return prevTasksList.map((task) => {
+				return task.id === taskId
+					? { ...task, isImportant: !task.isImportant }
+					: { ...task };
+			});
+		});
+		/* setTasksList((prevTasksList) => {
+			prevTasksList.map((task) => {
+				return task.id === taskId ? [{ ...task, id: !task.id }] : [...task];
+			});
+		}); */
+	}
 
 	console.log('Task List: ', tasksList);
 
@@ -46,8 +49,13 @@ function Tasks() {
 		<div className='notes-container'>
 			<TaskSelector handleClick={selectTasks} />
 			<AddTask handleAddTask={addTask} />
-			<DisplayedTasks tasksList={tasksList} handleDelete={deleteTask} />
-			{/* {tasksList !== [] && tasksList !== undefined ? taskBox : null} */}
+			<div className='tasks-container'>
+				<DisplayedTasks
+					tasksList={tasksList}
+					handleDelete={deleteTask}
+					handleToggleImportant={toggleImportant}
+				/>
+			</div>
 		</div>
 	);
 }

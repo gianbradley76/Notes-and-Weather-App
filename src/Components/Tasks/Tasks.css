@@ -14,3 +14,10 @@
 	letter-spacing: -1px;
 	/* border:none; */
 }
+
+.tasks-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 5px;
+}

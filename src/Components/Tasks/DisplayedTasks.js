@@ -1,11 +1,7 @@
-import { useEffect } from 'react';
 import TaskBlock from './TaskBlock';
 
 function DisplayedTasks(props) {
 	const tasksList = props.tasksList;
-	useEffect(() => {
-		console.log('displayed tasks');
-	}, [tasksList]);
 
 	return tasksList === undefined
 		? null
@@ -16,6 +12,7 @@ function DisplayedTasks(props) {
 							key={task.id}
 							taskData={task}
 							handleDelete={props.handleDelete}
+							handleToggleImportant={props.handleToggleImportant}
 						/>
 					</div>
 				);

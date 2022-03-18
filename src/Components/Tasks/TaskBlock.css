@@ -1,6 +1,32 @@
 .task-block {
+	max-width: 80%;
+	width: 80%;
+	margin-top: 10px;
 	display: flex;
 	align-items: center;
-	height: fit-content;
-	font-size: 20px;
+	background-color: darkgrey;
+	border-radius: 3px;
+	padding: 10px;
+}
+
+.task-block--description {
+	width: 85%;
+	max-width: 85%;
+	height: auto;
+	word-wrap: break-word;
+}
+
+.task-block--deadline {
+	margin-left: auto;
+}
+
+.task-block--dlt-task {
+	height: 2em;
+	width: 2em;
+	vertical-align: center;
+	margin-left: 10px;
+	font-size: 1.5em;
+	background: none;
+	color: rgba(160, 12, 44, 0.699);
+	border: none;
 }

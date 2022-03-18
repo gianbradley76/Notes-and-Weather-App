@@ -1,4 +1,6 @@
 .add-task-block {
+	width: auto;
+	align-self: center;
 	display: flex;
 	align-items: center;
 	gap: 10px;
