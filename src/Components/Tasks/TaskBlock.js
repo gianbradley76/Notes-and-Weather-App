@@ -12,7 +12,7 @@ function TaskBlock(props) {
 	return (
 		<div className='task-block'>
 			<p className='task-block--description'>{taskDesc}</p>
-			<p className='task-block--deadline'>{deadline.getDate()}</p>
+			<p className='task-block--deadline'>{new Date(deadline).getDate()}</p>
 			<button
 				className='task-block--toggle-important'
 				onClick={() => props.handleToggleImportant(taskId)}

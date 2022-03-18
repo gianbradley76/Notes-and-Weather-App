@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import TaskSelector from './TaskSelector';
 import AddTask from './AddTask';
@@ -7,7 +7,16 @@ import './Tasks.css';
 
 function Tasks() {
 	const [displayedTasks, setDisplayedTasks] = useState('Important');
-	const [tasksList, setTasksList] = useState([]);
+	const [tasksList, setTasksList] = useState(
+		localStorage.getItem('tasksList') === null
+			? []
+			: JSON.parse(localStorage.getItem('tasksList'))
+	);
+
+	// Updates local stoarge for every action with tasks
+	useEffect(() => {
+		localStorage.setItem('tasksList', JSON.stringify(tasksList));
+	}, [tasksList]);
 
 	function selectTasks(selectedTasks) {
 		setDisplayedTasks(selectedTasks);
@@ -29,18 +38,13 @@ function Tasks() {
 
 	function toggleImportant(taskId) {
 		console.log('CHANGED!', taskId);
-		setTasksList((prevTasksList) => {
-			return prevTasksList.map((task) => {
-				return task.id === taskId
+		setTasksList((prevTasksList) =>
+			prevTasksList.map((task) =>
+				task.id === taskId
 					? { ...task, isImportant: !task.isImportant }
-					: { ...task };
-			});
-		});
-		/* setTasksList((prevTasksList) => {
-			prevTasksList.map((task) => {
-				return task.id === taskId ? [{ ...task, id: !task.id }] : [...task];
-			});
-		}); */
+					: { ...task }
+			)
+		);
 	}
 
 	console.log('Task List: ', tasksList);
