@@ -4,20 +4,31 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
-	background-color: gray;
+	align-self: flex-end;
 }
 
 .task-selector button {
 	margin: 0 15px;
-	padding: 5px 10px;
+	padding: 10px 15px;
 	font-size: 20px;
 	letter-spacing: -1px;
-	/* border:none; */
+	border: none;
+	border-radius: 5px;
+	background-color: #4a4e69;
+	color: #f2e9e4;
+	cursor: pointer;
+}
+
+.task-selector button:hover {
+	background-color: #22223b;
 }
 
 .tasks-container {
+	margin-top: 20px;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	align-items: center;
 	gap: 5px;
+	width: 100%;
+	height: auto;
 }

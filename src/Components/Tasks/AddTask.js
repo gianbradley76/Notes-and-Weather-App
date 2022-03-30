@@ -55,15 +55,18 @@ function AddTask(props) {
 					className='task-datepicker'
 				/>
 			</div>
-			<input
-				type='checkbox'
-				id='isImportant'
-				checked={task.isImportant}
-				onChange={handleChange}
-				name='isImportant'
-				className='task--importance'
-			/>
-			<label htmlFor='isImportant'>Importance</label>
+			<label className='task--importance' htmlFor='isImportant'>
+				Important
+				<input
+					type='checkbox'
+					id='isImportant'
+					checked={task.isImportant}
+					onChange={handleChange}
+					name='isImportant'
+					className='task--importance-box'
+				/>
+				<span className='checkmark'></span>
+			</label>
 		</div>
 	);
 }

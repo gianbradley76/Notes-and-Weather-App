@@ -6,48 +6,106 @@ import DisplayedTasks from './DisplayedTasks';
 import './Tasks.css';
 
 function Tasks() {
-	const [displayedTasks, setDisplayedTasks] = useState('Important');
-	const [tasksList, setTasksList] = useState(
-		localStorage.getItem('tasksList') === null
+	const [selectedTasks, setSelectedTasks] = useState('all');
+	const [allTasks, setAllTasks] = useState(
+		localStorage.getItem('allTasks') === null
 			? []
-			: JSON.parse(localStorage.getItem('tasksList'))
+			: JSON.parse(localStorage.getItem('allTasks'))
 	);
+	const [displayedTasks, setDisplayedTasks] = useState([]);
+
+	// Makes all task deadlines into a Date Object
+	useEffect(() => {
+		setAllTasks((prevAllTasks) => {
+			return prevAllTasks.map((task) => {
+				return { ...task, deadline: new Date(task.deadline) };
+			});
+		});
+	}, []);
+
+	useEffect(() => {
+		console.log(new Date());
+		setDisplayedTasks(allTasks);
+	}, [allTasks]);
+
+	useEffect(() => {
+		switch (selectedTasks) {
+			case 'important':
+				setDisplayedTasks(allTasks.filter((task) => task.isImportant === true));
+				break;
+			case 'today':
+				setDisplayedTasks(
+					allTasks.filter((task) => {
+						const d = new Date();
+						return (
+							task.deadline.getDate() === d.getDate() &&
+							task.deadline.getMonth() === d.getMonth() &&
+							task.deadline.getFullYear() === d.getFullYear()
+						);
+					})
+				);
+				break;
+			case 'week':
+				setDisplayedTasks(
+					allTasks.filter((task) => {
+						const today = new Date();
+						const nextWeek = Date.parse(
+							new Date(
+								today.getFullYear(),
+								today.getMonth(),
+								today.getDate() + 7
+							)
+						);
+						return task.deadline <= nextWeek;
+					})
+				);
+				break;
+			case 'all':
+				setDisplayedTasks(allTasks);
+				break;
+			default:
+				break;
+		}
+	}, [selectedTasks, allTasks]);
 
 	// Updates local stoarge for every action with tasks
 	useEffect(() => {
-		localStorage.setItem('tasksList', JSON.stringify(tasksList));
-	}, [tasksList]);
+		localStorage.setItem('allTasks', JSON.stringify(allTasks));
+	}, [allTasks]);
 
-	function selectTasks(selectedTasks) {
-		setDisplayedTasks(selectedTasks);
-	}
+	const selectTasks = (selectedTasks) => {
+		setSelectedTasks(selectedTasks);
+	};
 
-	function addTask(task) {
-		setTasksList((prevTasksList) => {
-			return prevTasksList === undefined
+	const addTask = (task) => {
+		// Doesn't add task if input is empty
+		if (task.taskDesc === '') return;
+
+		// Add task if task input is not empty
+		setAllTasks((prevallTasks) => {
+			return prevallTasks === undefined
 				? [{ id: nanoid(), ...task }]
-				: [...prevTasksList, { id: nanoid(), ...task }];
+				: [...prevallTasks, { id: nanoid(), ...task }];
 		});
-	}
+	};
 
-	function deleteTask(taskId) {
-		setTasksList((prevTasksList) =>
-			prevTasksList.filter((task) => task.id !== taskId)
+	const deleteTask = (taskId) => {
+		setAllTasks((prevallTasks) =>
+			prevallTasks.filter((task) => task.id !== taskId)
 		);
-	}
+	};
 
-	function toggleImportant(taskId) {
-		console.log('CHANGED!', taskId);
-		setTasksList((prevTasksList) =>
-			prevTasksList.map((task) =>
+	const toggleImportant = (taskId) => {
+		setAllTasks((prevallTasks) =>
+			prevallTasks.map((task) =>
 				task.id === taskId
 					? { ...task, isImportant: !task.isImportant }
 					: { ...task }
 			)
 		);
-	}
+	};
 
-	console.log('Task List: ', tasksList);
+	console.log(allTasks);
 
 	return (
 		<div className='notes-container'>
@@ -55,7 +113,7 @@ function Tasks() {
 			<AddTask handleAddTask={addTask} />
 			<div className='tasks-container'>
 				<DisplayedTasks
-					tasksList={tasksList}
+					displayedTasks={displayedTasks}
 					handleDelete={deleteTask}
 					handleToggleImportant={toggleImportant}
 				/>

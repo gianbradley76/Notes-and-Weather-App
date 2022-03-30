@@ -13,13 +13,15 @@ function Weather(props) {
 	if (JSON.stringify(props.currentWeather) === '{}') return null;
 
 	function WeatherIcon() {
-		// Day or Night detector
+		// For detecting if its day or night
 		const currentHour = new Date().getHours();
 
+		// For weather icons
 		switch (props.currentWeather.weather[0].main) {
 			case 'Clouds':
 				return <WiCloud className='weather--icon' />;
 			case 'Clear':
+				// Displays sun or moon depending on the time
 				if (currentHour >= 5 && currentHour <= 18) {
 					return <BsSunFill className='weather--icon' />;
 				} else {

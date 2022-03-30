@@ -1,32 +1,72 @@
 .task-block {
-	max-width: 80%;
 	width: 80%;
 	margin-top: 10px;
 	display: flex;
 	align-items: center;
-	background-color: darkgrey;
-	border-radius: 3px;
+	background-color: #22223b;
+	border-radius: 7px;
 	padding: 10px;
+	box-shadow: 2px 2px 5px #9a8c98;
+}
+
+.task-block--toggle-important,
+.task-block--dlt-task {
+	margin-left: 10px;
+	height: 30px;
+	width: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: rgba(200, 0, 0, 0.5);
+	border: none;
+	cursor: pointer;
+	border-radius: 50%;
+	background-color: #f2e9e4;
+}
+.task-block--toggle-important {
+	color: rgba(200, 0, 0);
+	font-size: 2em;
+}
+
+.task-block--dlt-task {
+	color: rgba(200, 0, 0, 0.5);
+	font-size: 1.2em;
+}
+.task-block--toggle-important:hover,
+.task-block--dlt-task:hover {
+	background-color: #c9ada7;
+}
+
+.task-block--dlt-task:hover {
+	color: rgba(200, 0, 0, 1);
 }
 
 .task-block--description {
 	width: 85%;
-	max-width: 85%;
 	height: auto;
+	margin: 0 15px;
 	word-wrap: break-word;
+	font-size: 1.5em;
+	color: #f2e9e4;
 }
 
 .task-block--deadline {
-	margin-left: auto;
+	margin-right: 5px;
+	width: 120px;
+	font-size: 1.1em;
+	text-align: center;
+	color: #f2e9e4;
 }
 
-.task-block--dlt-task {
-	height: 2em;
-	width: 2em;
+/* .task-block--dlt-task {
+	height: 30px;
+	width: 30px;
+	background-color: #f2e9e4;
 	vertical-align: center;
-	margin-left: 10px;
+	margin-right: 10px;
 	font-size: 1.5em;
 	background: none;
-	color: rgba(160, 12, 44, 0.699);
+	color: #c00;
 	border: none;
 }
+ */

@@ -1,20 +1,18 @@
 import TaskBlock from './TaskBlock';
 
 function DisplayedTasks(props) {
-	const tasksList = props.tasksList;
+	const tasksList = props.displayedTasks;
 
 	return tasksList === undefined
 		? null
 		: tasksList.map((task) => {
 				return (
-					<div key={task.id}>
-						<TaskBlock
-							key={task.id}
-							taskData={task}
-							handleDelete={props.handleDelete}
-							handleToggleImportant={props.handleToggleImportant}
-						/>
-					</div>
+					<TaskBlock
+						key={task.id}
+						taskData={task}
+						handleDelete={props.handleDelete}
+						handleToggleImportant={props.handleToggleImportant}
+					/>
 				);
 		  });
 }

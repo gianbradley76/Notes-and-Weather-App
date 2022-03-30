@@ -1,24 +1,25 @@
 import { MdDelete } from 'react-icons/md';
+import { BsExclamation } from 'react-icons/bs';
+import formatDate from '../../utils/formatDate';
 import './TaskBlock.css';
-/* eslint-disable no-unused-vars */
 
 function TaskBlock(props) {
 	const taskId = props.taskData.id;
 	const taskDesc = props.taskData.taskDesc;
-	const deadline = props.taskData.deadline;
+	const deadline = new Date(props.taskData.deadline);
 	const isImportant = props.taskData.isImportant;
-	console.log(props);
 
 	return (
 		<div className='task-block'>
-			<p className='task-block--description'>{taskDesc}</p>
-			<p className='task-block--deadline'>{new Date(deadline).getDate()}</p>
 			<button
 				className='task-block--toggle-important'
 				onClick={() => props.handleToggleImportant(taskId)}
 			>
-				{isImportant ? 'Make Important' : "Don't make important"}
+				<BsExclamation style={{ opacity: isImportant ? 1 : 0.5 }} />
 			</button>
+			<p className='task-block--description'>{taskDesc}</p>
+			<p className='task-block--deadline'>{formatDate(deadline)}</p>
+
 			<button
 				className='task-block--dlt-task'
 				onClick={() => props.handleDelete(taskId)}

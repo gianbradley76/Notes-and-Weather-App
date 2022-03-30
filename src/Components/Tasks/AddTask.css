@@ -1,39 +1,117 @@
 .add-task-block {
+	margin-top: 20px;
 	width: auto;
+	height: auto;
 	align-self: center;
 	display: flex;
 	align-items: center;
 	gap: 10px;
-	background-color: darkgrey;
+	background-color: #22223b;
 	padding: 10px;
-	width: fit-content;
+	border-radius: 7px;
+	box-shadow: 2px 2px 5px #4a4e69;
 }
 
 .add-task-btn {
-	width: 30px;
-	height: 30px;
+	margin: 0 5px;
 	text-align: center;
 	border: none;
+	background: none;
+	color: #f2e9e4;
+}
+
+.add-task-btn:hover {
+	color: #c9ada7;
 }
 
 .add-task-icon {
 	text-align: center;
 	vertical-align: middle;
-	font-size: 2em;
+	font-size: 3em;
+	cursor: pointer;
+}
+
+.task-block--task-input,
+.task-datepicker {
+	color: #4a4e69;
+	background-color: #f2e9e4;
+	padding: 7px 10px;
+	border: none;
+	border-radius: 7px;
 }
 
 .task-block--task-input {
-	background-color: #ccc;
-	padding: 5px;
-	border: none;
-	font-size: 1em;
+	width: 25em;
+	font-size: 1.5em;
 }
 
 .task-datepicker {
-	background-color: #ccc;
-	padding: 5px;
 	text-align: center;
-	border: none;
-	width: 100px;
-	font-size: 1em;
+	width: 120px;
+	font-size: 1.2em;
+	cursor: pointer;
+	color: #4a4e69;
+}
+
+.task--importance {
+	font-size: 1.5em;
+	cursor: pointer;
+	position: relative;
+	user-select: none;
+	padding-left: 30px;
+	color: #f2e9e4;
+}
+
+/* Hide the browser's default checkbox */
+.task--importance input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: #f2e9e4;
+	border-radius: 50%;
+}
+
+/* On mouse-over, add a background color */
+.task--importance:hover input ~ .checkmark {
+	background-color: #c9ada7;
+}
+
+/* When the checkbox is checked, add a background */
+.task--importance input:checked ~ .checkmark {
+	background-color: #f2e9e4;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+	content: '';
+	position: absolute;
+	display: none;
+}
+
+/* Show the checkmark when checked */
+.task--importance input:checked ~ .checkmark:after {
+	display: block;
+}
+/* Style the checkmark/indicator */
+.task--importance .checkmark:after {
+	left: 9px;
+	top: 5px;
+	width: 5px;
+	height: 10px;
+	border: solid #22223b;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
 }

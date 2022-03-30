@@ -7,22 +7,25 @@ function SearchLocation(props) {
 	const [searchText, setSearchText] = useState('');
 	const [searchActive, setSearchActive] = useState(false);
 
-	function handleChange(event) {
+	const handleChange = (event) => {
 		setSearchText(event.target.value);
-	}
+	};
 
-	function handleFocus() {
+	const handleFocus = () => {
 		setSearchActive(true);
-	}
+	};
 
-	function handleBlur() {
+	const handleBlur = () => {
 		setSearchActive(false);
-	}
+	};
 
 	async function SearchLocation(event) {
+		// Doesn't search location if input is empty
+		if (searchText === '') return;
+
+		// Search location if input is not empty
 		if (event.key === 'Enter') {
 			const currentWeatherData = await fetchCurrentWeather(searchText);
-
 			props.searchSuccess(currentWeatherData);
 		}
 	}

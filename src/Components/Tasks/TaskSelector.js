@@ -17,7 +17,7 @@ function TaskSelector(props) {
 				className='task--task-week-btn'
 				onClick={() => props.handleClick('week')}
 			>
-				this Week
+				This Week
 			</button>
 			<button
 				className='task--task-all-btn'

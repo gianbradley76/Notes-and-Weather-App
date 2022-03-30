@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import formatDate from '../../utils/formatDate';
 
 function DisplayDateTime() {
 	const [dateTime, setDateTime] = useState(new Date());
@@ -13,13 +14,6 @@ function DisplayDateTime() {
 		};
 	}, []);
 
-	const date = dateTime.toLocaleDateString([], {
-		day: '2-digit',
-		month: 'short',
-	});
-
-	const day = dateTime.toLocaleDateString('en', { weekday: 'short' });
-
 	const time = dateTime.toLocaleTimeString('en', {
 		hour: 'numeric',
 		hour12: false,
@@ -28,7 +22,7 @@ function DisplayDateTime() {
 
 	return (
 		<div className='date-time-conatiner'>
-			<p className='date-time--day'>{`${day}, ${date}`}</p>
+			<p className='date-time--day'>{formatDate(dateTime)}</p>
 			<p className='date-time--time'>{time}</p>
 		</div>
 	);
