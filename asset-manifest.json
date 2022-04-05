@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Notes-and-Weather-App/static/css/main.eac49c67.css",
+    "main.js": "/Notes-and-Weather-App/static/js/main.d3a39b03.js",
+    "index.html": "/Notes-and-Weather-App/index.html",
+    "main.eac49c67.css.map": "/Notes-and-Weather-App/static/css/main.eac49c67.css.map",
+    "main.d3a39b03.js.map": "/Notes-and-Weather-App/static/js/main.d3a39b03.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eac49c67.css",
+    "static/js/main.d3a39b03.js"
+  ]
+}
